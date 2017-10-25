@@ -15,8 +15,19 @@ try:
 except FileNotFoundError:
     pass
 
+input("Hit <Enter> to launch the program...")
+
+#Opening the store and the "redeem a code" popup
+pyautogui.moveTo(500, 900)
+pyautogui.click()
+pyautogui.moveTo(250, 1000)
+pyautogui.click()
+
+i = 0
+
 try:
-    while 1:
+    while i < 1000:
+        i += 1
         random.shuffle(chars)
         
         for comb in itertools.permutations(chars, 13):
@@ -31,9 +42,11 @@ try:
             pyautogui.moveTo(720, 350)
             pyautogui.click()
 
+            #Cleaning the previous code
             for i in range(15):
                 pyautogui.press('del')
 
+            #A code is like XXXXXX-XXXXXX
             pyautogui.typewrite(comb[:6])
             pyautogui.typewrite("-")
             pyautogui.typewrite(comb[7:])
@@ -50,7 +63,10 @@ try:
 except KeyboardInterrupt:
     with open('tested_codes.txt', 'ab') as file:
         pickle.dump(tested_codes, file)
-
     print("Fermeture du programme en cours...")
     exit()
 
+with open('tested_codes.txt', 'ab') as file:
+    pickle.dump(tested_codes, file)
+    print("Fermeture du programme en cours...")
+    exit()
