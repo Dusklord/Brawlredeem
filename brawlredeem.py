@@ -8,8 +8,12 @@ import pickle
 chars = list(string.ascii_uppercase + "0123456789")
 tested_codes = []
 
-with open('tested_codes.txt', 'rb') as file:
-    tested_codes = pickle.load(file)
+try:
+    with open('tested_codes.txt', 'rb') as file:
+        tested_codes = pickle.load(file)
+
+except FileNotFoundError:
+    pass
 
 try:
     while 1:
@@ -22,7 +26,9 @@ try:
                 
             tested_codes.append(comb)
 
-            pyautogui.moveTo(700, 350)
+            time.sleep(0.5)
+
+            pyautogui.moveTo(720, 350)
             pyautogui.click()
 
             for i in range(15):
