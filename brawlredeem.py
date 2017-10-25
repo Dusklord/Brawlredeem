@@ -63,10 +63,10 @@ try:
 except KeyboardInterrupt:
     with open('tested_codes.txt', 'ab') as file:
         pickle.dump(tested_codes, file)
-    print("Fermeture du programme en cours...")
+    print("Exiting...")
     exit()
 
 with open('tested_codes.txt', 'ab') as file:
     pickle.dump(tested_codes, file)
-    print("Fermeture du programme en cours...")
+    print("Exiting...")
     exit()
